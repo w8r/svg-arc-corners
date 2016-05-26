@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SVG arc with rounded corners</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
+	<style type="text/css">
+
+	  body {
+	  	margin: 0;
+	  }
+
+		svg {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .arc {
+    	stroke: #ff0000;
+    	stroke-width: 2;
+    	fill: #ff0000;
+    	fill-opacity: 0.5;
+    	fill-rule: evenodd;
+    }
+
+    .guide {
+    	stroke: #446688;
+    	stroke-opacity: 0.5;
+    	stroke-width: 1;
+    	fill: none;
+    }
+
+    .controls {
+    	position: absolute;
+    	left: 20px;
+    	top: 20px;
+    	font-family: 'Roboto', sans-serif;
+    	z-index: 2;
+    }
+
+    .controls label {
+    	display: block;
+    }
+
+    .controls input {
+    	width: 80px;
+    	border: 1px solid #ddd;
+    }
+
+    .controls .coordinates input {
+    	width: 36px;
+    }
+
+    .controls .angle-value {
+    	border: 0;
+    	width: 30px;
+    	font-size: 15px;
+    }
+
+	</style>
+</head>
+<body>
+  <form class="controls">
+    <label><input type="range" min="0" max="360" name="angle" value="130" />
+    <input type="text" disabled class="angle-value" name="angle-value" value="110">&deg;</label>
+    <label class="coordinates">
+      <input type="number" name="x" value="0"/>
+      <input type="number" name="y" value="0"/> Center </label>
+    <label><input type="number" name="radius" value="150"/> Radius</label>
+    <label><input type="number" name="width" value="50"/> Line width</label>
+    <label><input type="number" name="corner" value="10"/> Corner radius</label>
+  </form>
+  <svg viewBox="-300 -300 500 500">
+    <path class="arc" id="arc" />
+    <path class="guide" id="arc1" />
+    <path class="guide" id="arc2" />
+    <line class="guide" id="b1" />
+    <line class="guide" id="b2" />
+
+    <circle id="c1" class="guide" />
+    <circle id="c2" class="guide" />
+    <circle id="c3" class="guide" />
+    <circle id="c4" class="guide" />
+  </svg>
+  <script type="text/javascript" src="./build.js"></script>
+</body>
+</html>
