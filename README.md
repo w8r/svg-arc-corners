@@ -15,6 +15,11 @@ var path = document.querySelector('#your-path');
 path.setAttribute('d', cornerArc([0, 0], 150, 0, 45, 50, 10));
 ```
 
+### Authors
+
+* [Alexander Milevski @w8r](https://github.com/w8r)
+* [Maksym Rusynyk @rumax](https://github.com/rumax)
+
 ### License
 
 The MIT License (MIT)
