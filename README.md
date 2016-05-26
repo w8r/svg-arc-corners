@@ -1,6 +1,8 @@
-# SVG arc with rounded corners
+# SVG arc with rounded corners [![npm version](https://badge.fury.io/js/svg-arc-corners.svg)](https://badge.fury.io/js/svg-arc-corners)
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/26884/15583217/33b4a9f2-2375-11e6-8a53-eaeda12d3106.png)
+
+A simple alternative to `d3.arc()`
 
 ### API
 
