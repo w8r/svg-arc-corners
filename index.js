@@ -58,16 +58,21 @@ function arc(center, R, start, end, w, corner) {
     return drawCircle(center, R, w);
   }
 
+  let innerR        = R - w;
+  let circumference = Math.abs(end - start);
   corner = Math.min(w / 2, corner);
 
+  if (360 * (corner / (Math.PI * (R - w))) > Math.abs(start - end)) {
+    corner = (circumference / 360) * innerR * Math.PI;
+  }
+
   // inner and outer radiuses
-  let innerR  = R - w;
-  let innerR2 = innerR + corner;
-  let oR  = R - corner;
+  let innerR2      = innerR + corner;
+  let outerRadius  = R - corner;
 
   // butts corner points
-  let oStart = pointOnArc(center, oR, start);
-  let oEnd   = pointOnArc(center, oR, end);
+  let oStart = pointOnArc(center, outerRadius, start);
+  let oEnd   = pointOnArc(center, outerRadius, end);
 
   let iStart = pointOnArc(center, innerR2, start);
   let iEnd   = pointOnArc(center, innerR2, end);
@@ -82,7 +87,8 @@ function arc(center, R, start, end, w, corner) {
   let oArcStart = pointOnArc(center, R, start + oSection);
   let oArcEnd   = pointOnArc(center, R, end   - oSection);
 
-  let arcSweep = end - start <= 180 ? 0 : 1;
+  let arcSweep1 = circumference > 180 + 2 * oSection ? 1 : 0;
+  let arcSweep2 = circumference > 180 + 2 * iSection ? 1 : 0;
 
   return [
     // begin path
@@ -90,7 +96,7 @@ function arc(center, R, start, end, w, corner) {
     // outer start corner
     "A",  corner,  corner, 0,          0, 1,  oArcStart[0], oArcStart[1],
     // outer main arc
-    "A",       R,       R, 0,   arcSweep, 1,   oArcEnd[0],    oArcEnd[1],
+    "A",       R,       R, 0,  arcSweep1, 1,   oArcEnd[0],    oArcEnd[1],
     // outer end corner
     "A",  corner,  corner, 0,          0, 1,      oEnd[0],       oEnd[1],
     // end butt
@@ -98,7 +104,7 @@ function arc(center, R, start, end, w, corner) {
     // inner end corner
     "A",  corner,  corner, 0,          0, 1,   iArcEnd[0],    iArcEnd[1],
     // inner arc
-    "A",  innerR,  innerR, 0,   arcSweep, 0, iArcStart[0],  iArcStart[1],
+    "A",  innerR,  innerR, 0,   arcSweep2, 0, iArcStart[0],  iArcStart[1],
     // inner start corner
     "A",  corner,  corner, 0,          0, 1,    iStart[0],     iStart[1],
     "Z" // end path
@@ -108,6 +114,3 @@ function arc(center, R, start, end, w, corner) {
 module.exports = arc;
 module.exports.pointOnArc = pointOnArc;
 module.exports.drawCircle = drawCircle;
-
-
-

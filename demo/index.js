@@ -1,4 +1,4 @@
-import arc, { pointOnArc } from '../';
+import arc, { pointOnArc } from '../index';
 
 function describeArc(center, radius, startAngle, endAngle){
   const start = pointOnArc(center, radius, endAngle);
@@ -77,3 +77,4 @@ function update(c, radius, start, angle, width, corner) {
 render();
 
 form.addEventListener('change', render);
+form['angle'].focus();
