@@ -1,5 +1,7 @@
 import arc, { pointOnArc } from '../index';
 
+global.arc = arc;
+
 function describeArc(center, radius, startAngle, endAngle){
   const start = pointOnArc(center, radius, endAngle);
   const end = pointOnArc(center, radius, startAngle);

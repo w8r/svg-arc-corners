@@ -6,7 +6,7 @@ A simple alternative to `d3.arc()`
 
 ### API
 
-`cornerArc([cX, cY], radius, startAngle, endAngle, thickness, cornerRadius)`
+`cornerArc([cX, cY], radius, startAngle, endAngle, thickness, cornerRadius, <returnPoints>)`
 
 ```js
 var cornerArc = require('svg-arc-corners');
@@ -14,6 +14,8 @@ var cornerArc = require('svg-arc-corners');
 var path = document.querySelector('#your-path');
 path.setAttribute('d', cornerArc([0, 0], 150, 0, 45, 50, 10));
 ```
+
+If you pass `true` for `returnPoints`, function will return the SVG path as an array of points and commands.
 
 ### Authors
 

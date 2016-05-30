@@ -37,7 +37,7 @@ function drawCircle(center, R, width) {
     'A', innerR,     innerR, 0, 1, 0, x + innerR, y,
     'A', innerR,     innerR, 0, 1, 0, x - innerR, y,
     'Z'
-  ].join(' ');
+  ];
 }
 
 
@@ -50,12 +50,15 @@ function drawCircle(center, R, width) {
  * @param  {Number}         end
  * @param  {Number}         w
  * @param  {Number}         corner Corner radius
+ * @param  {Booelan=}       returnPoints - return array for path or string
  *
- * @return {String}
+ * @return {String|Array.<Number|String>}
  */
-function arc(center, R, start, end, w, corner) {
+function arc(center, R, start, end, w, corner, returnPoints) {
+  let points;
   if (Math.abs(end - start) === 360) {
-    return drawCircle(center, R, w);
+    points = drawCircle(center, R, w);
+    return returnPoints ? points : points.join(' ');
   }
 
   let innerR        = R - w;
@@ -90,7 +93,7 @@ function arc(center, R, start, end, w, corner) {
   let arcSweep1 = circumference > 180 + 2 * oSection ? 1 : 0;
   let arcSweep2 = circumference > 180 + 2 * iSection ? 1 : 0;
 
-  return [
+  points = [
     // begin path
     "M", oStart[0], oStart[1],
     // outer start corner
@@ -108,7 +111,9 @@ function arc(center, R, start, end, w, corner) {
     // inner start corner
     "A",  corner,  corner, 0,          0, 1,    iStart[0],     iStart[1],
     "Z" // end path
-  ].join(' ');
+  ];
+
+  return returnPoints ? points : points.join(' ');
 }
 
 module.exports = arc;
