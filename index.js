@@ -8,14 +8,14 @@ const PI2 = 2 * Math.PI;
  * @param  {Number} angle
  * @return {Array.<Number>}
  */
-function pointOnArc(center, R, angle) {
+const pointOnArc = (center, R, angle) => {
   let radians = (angle - 90) * RAD_DEG;
 
   return [
     center[0] + (R * Math.cos(radians)),
     center[1] + (R * Math.sin(radians))
   ];
-}
+};
 
 
 /**
@@ -24,7 +24,7 @@ function pointOnArc(center, R, angle) {
  * @param  {Number}         width
  * @return {String}
  */
-function drawCircle(center, R, width) {
+const drawCircle = (center, R, width) => {
   let innerR = R - width;
   let [x, y] = center;
 
@@ -38,7 +38,7 @@ function drawCircle(center, R, width) {
     'A', innerR,     innerR, 0, 1, 0, x - innerR, y,
     'Z'
   ];
-}
+};
 
 
 /**
@@ -54,7 +54,7 @@ function drawCircle(center, R, width) {
  *
  * @return {String|Array.<Number|String>}
  */
-function arc(center, R, start, end, w, corner, returnPoints) {
+const arc = (center, R, start, end, w, corner, returnPoints) => {
   let points;
   if (Math.abs(end - start) === 360) {
     points = drawCircle(center, R, w);
