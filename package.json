@@ -1,6 +1,6 @@
 {
   "name": "svg-arc-corners",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SVG arc path with rounded corners",
   "main": "lib/index.js",
   "module": "index.js",
