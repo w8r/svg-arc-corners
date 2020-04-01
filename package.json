@@ -32,7 +32,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
-    "eslint": "^2.10.2",
+    "eslint": "^6.8.0",
     "serve": "^1.4.0",
     "tap": "^5.7.2",
     "watchify": "^3.7.0"
