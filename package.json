@@ -33,7 +33,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "eslint": "^2.10.2",
-    "serve": "^1.4.0",
+    "serve": "^11.3.2",
     "tap": "^5.7.2",
     "watchify": "^3.7.0"
   }
